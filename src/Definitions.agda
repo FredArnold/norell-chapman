@@ -98,4 +98,34 @@ data Image_∋_ {A B : Set}(f : A -> B) : B -> Set where
 inv : {A B : Set}(f : A -> B)(y : B) -> Image f ∋ y -> A
 inv f .(f x) (im x) = x
 
+data Fin : Nat -> Set where
+  fzero : {n : Nat} -> Fin (suc n)
+  fsuc  : {n : Nat} -> Fin n -> Fin (suc n)
 
+magic : {A : Set} -> Fin zero -> A
+magic ()
+
+data Empty : Set where
+  empty : Fin zero -> Empty
+
+magic' : {A : Set} -> Empty -> A
+magic' (empty ())
+
+_!_ : {n : Nat}{A : Set} -> Vec A n -> Fin n -> A
+[]        ! ()
+(x :: xs) ! fzero    = x
+(x :: xs) ! (fsuc i) = xs ! i
+
+tabulate : {n : Nat}{A : Set} -> (Fin n -> A) -> Vec A n
+tabulate {zero}  f = []
+tabulate {suc n} f = f fzero :: tabulate (f ∘ fsuc)
+
+data False : Set where
+record True : Set where
+
+trivial : True
+trivial = _
+
+isTrue : Bool -> Set
+isTrue true  = True
+isTrue false = False
