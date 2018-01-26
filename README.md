@@ -10,4 +10,11 @@ data Image_∋_ {A B : Set}(f : A -> B) : B -> Set where
 inv : {A B : Set}(f : A -> B)(y : B) -> Image f ∋ y -> A
 inv f .(f x) (im x) = x
 ```
-Agda infers ```agda y = f x``` from ```agda (im x) : Image f ∋ y```
+During pattern matching,
+```agda
+y = f x
+```
+is inferred from
+```agda
+(im x) : Image f ∋ y
+```
