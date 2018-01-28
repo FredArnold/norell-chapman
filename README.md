@@ -1,5 +1,5 @@
 # Source files
-`Definitions` contains the code from the paper, `Exercises` contains my solutions for the exercises, `Stuff` is me trying things out.
+`Definitions` contains the code from the paper, `Exercises` contains my solutions to the exercises, `Stuff` is me trying things out.
 
 # Surprises
 ## inv
@@ -10,11 +10,4 @@ data Image_∋_ {A B : Set}(f : A -> B) : B -> Set where
 inv : {A B : Set}(f : A -> B)(y : B) -> Image f ∋ y -> A
 inv f .(f x) (im x) = x
 ```
-During pattern matching,
-```agda
-y = f x
-```
-is inferred from
-```agda
-(im x) : Image f ∋ y
-```
+The pattern matching of inv contains a function application! Somehow, this is much harder for me to accept than a simple value appearing twice in pattern matching (and being dotted).
