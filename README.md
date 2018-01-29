@@ -7,7 +7,7 @@
 inv : {A B : Set}(f : A -> B)(y : B) -> Image f ∋ y -> A
 inv f .(f x) (im x) = x
 ```
-The pattern matching of inv contains a function application! Somehow, this is much harder for me to accept than a simple value appearing twice in pattern matching (and being dotted).
+The pattern matching of `inv` contains a function application! Somehow, this is much harder for me to accept than a simple value appearing twice in pattern matching (and being dotted).
 
 ## lookup
 ```agda
